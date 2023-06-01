@@ -34,6 +34,21 @@ public class MenuesRepository {
     public void addMenu(Menus menuToAdd){
         menus.add(menuToAdd);
     }
-
-
+    public void changeMenuById(Menus otherMenu, String id){
+        for(Menus menuToChange : menus){
+            if(menuToChange.id().equals(id)){
+                int index=menus.indexOf(menuToChange);
+                menus.set(index, otherMenu);
+            }
+        }
+        throw new MenueNotFoundException(id);
+    }
+    public void deleteMenuById(String id) {
+        for (Menus menuToDelete : menus) {
+            if (menuToDelete.id().equals(id)) {
+                menus.remove(menuToDelete);
+            }
+        }
+        throw new MenueNotFoundException(id);
+    }
 }
