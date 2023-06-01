@@ -50,18 +50,33 @@ class BurgerShopServiceTest {
         //GIVEN
         Menu expectedMenu = new Menu("1", "Cheeseburger", 14.99F,"Burger", "fries", "coke");
 
-        //WHEN + THEN
+        //WHEN
         burgerShopService.addMenu(expectedMenu);
         //THEN
         verify(menusRepository).addMenu(expectedMenu);
     }
 
     @Test
-    void updateMenu() {
+    void updateMenu_whenMenuIsUpdated_thenVerifyMethodCall() {
         //GIVEN
+        //String expectedId = "1";
+        Menu menuToUpdate = new Menu("1", "Beefburger", 19.99F,"Burger", "fries", "coke");
+
+        //WHEN
+        burgerShopService.updateMenu(menuToUpdate,menuToUpdate.id());
+        //THEN
+        verify(menusRepository).updateMenu(menuToUpdate, menuToUpdate.id());
     }
 
     @Test
-    void deleteMenu() {
+    void deleteMenu_whenMenuIsDeleted_thenVerifyMethodCall() {
+        //GIVEN
+        String expectedId = "2";
+        Menu givenMenu = new Menu("2", "Cheeseburger", 14.99F,"Burger", "fries", "coke");
+        burgerShopService.addMenu(givenMenu);
+        //WHEN
+        burgerShopService.deleteMenu(expectedId);
+        //THEN
+        verify(menusRepository).deleteMenuById(expectedId);
     }
 }
