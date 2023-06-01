@@ -1,6 +1,6 @@
 package de.iav.burgershop.model;
 
-public record Menus(
+public record Menu(
         String id,
         String name,
         float price,

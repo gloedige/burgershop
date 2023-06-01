@@ -1,29 +1,31 @@
 package de.iav.burgershop.repository;
 
 import de.iav.burgershop.exception.MenuNotFoundException;
-import de.iav.burgershop.model.Menus;
+import de.iav.burgershop.model.Menu;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class MenusRepository {
 
-    private List<Menus> menus;
+    private List<Menu> menus;
 
     public MenusRepository(){
         menus = new ArrayList<>();
     }
 
-    public MenusRepository(List<Menus> menus) {
+    public MenusRepository(List<Menu> menus) {
         this.menus = menus;
     }
 
-    public List<Menus> getAllMenus() {
+    public List<Menu> getAllMenus() {
         return menus;
     }
 
-    public Menus getSingleMenuById(String id){
-        for(Menus singleMenuFromList : menus){
+    public Menu getSingleMenuById(String id){
+        for(Menu singleMenuFromList : menus){
             if(singleMenuFromList.id().equals(id)){
                 return singleMenuFromList;
             }
@@ -31,11 +33,11 @@ public class MenusRepository {
         throw new MenuNotFoundException(id);
     }
 
-    public void addMenu(Menus menuToAdd){
+    public void addMenu(Menu menuToAdd){
         menus.add(menuToAdd);
     }
-    public void changeMenuById(Menus otherMenu, String id){
-        for(Menus menuToChange : menus){
+    public void updateMenu(Menu otherMenu, String id){
+        for(Menu menuToChange : menus){
             if(menuToChange.id().equals(id)){
                 int index=menus.indexOf(menuToChange);
                 menus.set(index, otherMenu);
@@ -44,7 +46,7 @@ public class MenusRepository {
         throw new MenuNotFoundException(id);
     }
     public void deleteMenuById(String id) {
-        for (Menus menuToDelete : menus) {
+        for (Menu menuToDelete : menus) {
             if (menuToDelete.id().equals(id)) {
                 menus.remove(menuToDelete);
             }
