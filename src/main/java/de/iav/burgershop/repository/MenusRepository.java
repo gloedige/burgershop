@@ -1,20 +1,20 @@
 package de.iav.burgershop.repository;
 
-import de.iav.burgershop.exception.MenueNotFoundException;
+import de.iav.burgershop.exception.MenuNotFoundException;
 import de.iav.burgershop.model.Menus;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuesRepository {
+public class MenusRepository {
 
     private List<Menus> menus;
 
-    public MenuesRepository(){
+    public MenusRepository(){
         menus = new ArrayList<>();
     }
 
-    public MenuesRepository(List<Menus> menus) {
+    public MenusRepository(List<Menus> menus) {
         this.menus = menus;
     }
 
@@ -28,7 +28,7 @@ public class MenuesRepository {
                 return singleMenuFromList;
             }
         }
-        throw new MenueNotFoundException(id);
+        throw new MenuNotFoundException(id);
     }
 
     public void addMenu(Menus menuToAdd){
@@ -41,7 +41,7 @@ public class MenuesRepository {
                 menus.set(index, otherMenu);
             }
         }
-        throw new MenueNotFoundException(id);
+        throw new MenuNotFoundException(id);
     }
     public void deleteMenuById(String id) {
         for (Menus menuToDelete : menus) {
@@ -49,6 +49,6 @@ public class MenuesRepository {
                 menus.remove(menuToDelete);
             }
         }
-        throw new MenueNotFoundException(id);
+        throw new MenuNotFoundException(id);
     }
 }

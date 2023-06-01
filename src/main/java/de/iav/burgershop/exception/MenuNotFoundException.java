@@ -2,9 +2,9 @@ package de.iav.burgershop.exception;
 
 import java.util.NoSuchElementException;
 
-public class MenueNotFoundException extends NoSuchElementException {
+public class MenuNotFoundException extends NoSuchElementException {
 
-    public MenueNotFoundException(String id){
+    public MenuNotFoundException(String id){
         super("Menu with ID: " + id + " could not be found!");
     }
 
