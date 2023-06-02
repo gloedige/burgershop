@@ -71,12 +71,10 @@ class BurgerShopServiceTest {
     @Test
     void deleteMenu_whenMenuIsDeleted_thenVerifyMethodCall() {
         //GIVEN
-        String expectedId = "2";
         Menu givenMenu = new Menu("2", "Cheeseburger", 14.99F,"Burger", "fries", "coke");
-        burgerShopService.addMenu(givenMenu);
         //WHEN
-        burgerShopService.deleteMenu(expectedId);
+        burgerShopService.deleteMenu(givenMenu.id());
         //THEN
-        verify(menusRepository).deleteMenuById(expectedId);
+        verify(menusRepository).deleteMenuById(givenMenu.id());
     }
 }
