@@ -19,14 +19,14 @@ public class BurgerShopController {
     public List<Menu> getAllMenus(){return burgerShopService.getAllMenus();}
 
     @GetMapping("Menus/{id}")
-    Menu getSingleMenuById(String id){return burgerShopService.getSingleMenuById(id);}
+    Menu getSingleMenuById(@PathVariable String id){return burgerShopService.getSingleMenuById(id);}
 
     @PostMapping ("/Menus")
-    public void addMenu(Menu menuToAdd){burgerShopService.addMenu(menuToAdd);}
+    public void addMenu(@RequestBody Menu menuToAdd){burgerShopService.addMenu(menuToAdd);}
 
     @PostMapping ("/Menus/{id}")
-    public void updateMenu(Menu otherMenu, String id){burgerShopService.updateMenu(otherMenu, id);}
+    public void updateMenu(@RequestBody Menu otherMenu, @PathVariable String id){burgerShopService.updateMenu(otherMenu, id);}
 
-    @DeleteMapping ("/Menus")
-    public void deleteMenu(String id){burgerShopService.deleteMenu(id);}
+    @DeleteMapping ("/Menus/{id}")
+    public void deleteMenu(@PathVariable String id){burgerShopService.deleteMenu(id);}
 }
